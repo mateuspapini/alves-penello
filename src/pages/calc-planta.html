@@ -1,0 +1,120 @@
+<!--
+path: /calculadoras/imovel-na-planta/
+title: Calculadora de distrato e atraso de imóvel na planta | Alves Penello
+description: Estime a devolução no distrato de imóvel na planta ou lote, a indenização por atraso na entrega e a rescisão por culpa da construtora, conforme a Lei 13.786/2018.
+nav: calculadoras
+scripts: calc
+-->
+<section class="pagina">
+  <div class="wrap pagina__grid pagina__grid--so">
+    <div>
+      <p class="migalha"><a href="/calculadoras/">Calculadoras</a>Imóvel na planta</p>
+      <h1>Imóvel na planta ou obra atrasada.</h1>
+      <p class="lead">Escolha a sua situação e veja uma estimativa dos valores, conforme a Lei do Distrato (Lei 13.786/2018) e o entendimento dos tribunais.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--topo0">
+  <div class="wrap">
+    <div class="calc" id="calc-planta">
+      <form class="calc__form" novalidate>
+        <h2 class="calc__titulo" id="cen-titulo">Qual é a sua situação?</h2>
+        <div class="cenarios" role="group" aria-labelledby="cen-titulo">
+          <button class="cenario" type="button" data-cen="distrato" aria-pressed="true"><b>Quero desistir</b><small>Distrato por iniciativa do comprador</small></button>
+          <button class="cenario" type="button" data-cen="atraso" aria-pressed="false"><b>A obra atrasou</b><small>Quero ficar com o imóvel e ser indenizado</small></button>
+          <button class="cenario" type="button" data-cen="devolucao" aria-pressed="false"><b>Quero o dinheiro de volta</b><small>Rescisão por atraso da construtora</small></button>
+        </div>
+
+        <fieldset data-mostra="distrato">
+          <legend>Tipo de empreendimento</legend>
+          <div class="opcoes">
+            <label class="opcao"><input type="radio" name="pl-tipo" value="inc" checked><span>Apartamento ou casa (incorporação)</span></label>
+            <label class="opcao"><input type="radio" name="pl-tipo" value="lote"><span>Lote (loteamento)</span></label>
+          </div>
+        </fieldset>
+        <fieldset data-mostra="distrato" data-tipo="inc">
+          <legend>O empreendimento tem patrimônio de afetação?</legend>
+          <div class="opcoes">
+            <label class="opcao"><input type="radio" name="pl-afet" value="nao" checked><span>Não</span></label>
+            <label class="opcao"><input type="radio" name="pl-afet" value="sim"><span>Sim</span></label>
+            <label class="opcao"><input type="radio" name="pl-afet" value="ns"><span>Não sei</span></label>
+          </div>
+          <p class="dica" style="margin-top:10px;font-size:13.5px;color:var(--ap-cinza)">A informação costuma constar no contrato ou no registro da incorporação.</p>
+        </fieldset>
+        <div class="campo" data-mostra="distrato" data-tipo="lote">
+          <label for="pl-contrato">Valor total do contrato do lote</label>
+          <input id="pl-contrato" type="text" inputmode="numeric" autocomplete="off" placeholder="R$ 0,00" data-dinheiro aria-describedby="pl-contrato-erro">
+          <p class="erro" id="pl-contrato-erro" role="alert" hidden></p>
+        </div>
+
+        <div class="linha-campos" data-mostra="atraso devolucao">
+          <div class="campo">
+            <label for="pl-prevista">Data de entrega no contrato</label>
+            <input id="pl-prevista" type="date" aria-describedby="pl-prevista-erro">
+            <p class="erro" id="pl-prevista-erro" role="alert" hidden></p>
+          </div>
+          <div class="campo">
+            <label for="pl-entrega">Data da entrega das chaves</label>
+            <input id="pl-entrega" type="date" aria-describedby="pl-entrega-dica">
+            <p class="dica" id="pl-entrega-dica">Deixe em branco se ainda não recebeu.</p>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="pl-pago">Total já pago à construtora</label>
+          <input id="pl-pago" type="text" inputmode="numeric" autocomplete="off" placeholder="R$ 0,00" data-dinheiro aria-describedby="pl-pago-erro">
+          <p class="erro" id="pl-pago-erro" role="alert" hidden></p>
+        </div>
+        <div class="campo" data-mostra="atraso">
+          <label for="pl-imovel">Valor do imóvel no contrato (opcional)</label>
+          <input id="pl-imovel" type="text" inputmode="numeric" autocomplete="off" placeholder="R$ 0,00" data-dinheiro aria-describedby="pl-imovel-dica">
+          <p class="dica" id="pl-imovel-dica">Usado para estimar os lucros cessantes.</p>
+        </div>
+        <div class="campo" data-mostra="distrato">
+          <label for="pl-corretagem">Comissão de corretagem paga (opcional)</label>
+          <input id="pl-corretagem" type="text" inputmode="numeric" autocomplete="off" placeholder="R$ 0,00" data-dinheiro aria-describedby="pl-corretagem-dica pl-corretagem-erro">
+          <p class="dica" id="pl-corretagem-dica">A lei permite descontar a corretagem no distrato, se ela estiver prevista no contrato.</p>
+          <p class="erro" id="pl-corretagem-erro" role="alert" hidden></p>
+        </div>
+        <button class="btn" type="submit">Calcular</button>
+      </form>
+
+      <div class="calc__res">
+        <div class="res" aria-live="polite">
+          <div class="res__vazio"><strong>O resultado aparece aqui.</strong><p>Escolha a situação, preencha os dados e toque em calcular.</p></div>
+        </div>
+      </div>
+    </div>
+    <p class="aviso">Simulação de caráter informativo, baseada nas regras gerais da Lei 4.591/1964 e da Lei 6.766/1979, com as alterações da Lei 13.786/2018, e em entendimentos do Superior Tribunal de Justiça. Os valores não incluem correção monetária nem juros. Não substitui a análise do seu contrato por um advogado.</p>
+  </div>
+</section>
+
+<section class="sec sec--branco">
+  <div class="wrap">
+    <div class="cabeca">
+      <div class="linha rv">
+        <p class="rotulo">Entenda as regras</p>
+        <h2>O que diz a lei em cada situação.</h2>
+      </div>
+    </div>
+    <div class="regras rv">
+      <div>
+        <h3>Distrato</h3>
+        <p>Em incorporações, a construtora pode reter até 25% do que foi pago, ou até 50% se o empreendimento tiver patrimônio de afetação, além da corretagem prevista em contrato. Em loteamentos, a retenção é limitada a 10% do valor atualizado do contrato.</p>
+        <p>Os tribunais podem reduzir percentuais considerados excessivos.</p>
+      </div>
+      <div>
+        <h3>Atraso na entrega</h3>
+        <p>A lei admite até 180 dias de tolerância, se o contrato previr. Passado esse prazo, o comprador que quiser ficar com o imóvel tem direito a 1% do valor pago por mês de atraso.</p>
+        <p>Em muitos casos os tribunais também reconhecem lucros cessantes, calculados pelo aluguel que o imóvel renderia no período.</p>
+      </div>
+      <div>
+        <h3>Rescisão por atraso</h3>
+        <p>Se a construtora não entrega o imóvel depois da tolerância, o comprador pode desfazer o contrato e receber tudo o que pagou, de uma vez e com correção, além da multa prevista no contrato (Súmula 543 do STJ e art. 43-A da Lei 4.591/1964).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{cta:Quer uma análise do seu contrato?|Envie o resultado da simulação pelo WhatsApp e avaliamos o seu caso.}}
